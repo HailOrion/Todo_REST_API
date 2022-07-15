@@ -30,7 +30,7 @@ public class CustomerController {
     @RequestMapping("/login")
     public ResponseEntity<String>login(@RequestBody CustomerSignInDto signInDto){
 
-       Customers customerInDb = customerRepo.findByEmailAndPassword(signInDto.getEmail(), signInDto.getPassword()).orElseThrow(()->new CustomAppException("Email or password is incorrect", HttpStatus.NOT_ACCEPTABLE));
+       Customers customerInDb= customerRepo.findByEmailAndPassword(signInDto.getEmail(), signInDto.getPassword()).orElseThrow(()->new CustomAppException("Email or password is incorrect", HttpStatus.NOT_ACCEPTABLE));
 
         return new ResponseEntity<>("User logged in",HttpStatus.OK);
     }
